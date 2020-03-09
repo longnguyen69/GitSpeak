@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doc so</title>
+    <script>
+        function speakCheck(n) {
+            switch (n) {
+                case 0: return "khong";
+                case 1: return "mot";
+                case 2: return "hai";
+                case 3: return "ba";
+                case 4: return "bon";
+                case 5: return "nam";
+                case 6: return "sau";
+                case 7: return "bay";
+                case 8: return "tam";
+                case 9: return "chin";
+                default: return "khong ro so";
+            }
+        }
+        function speakCalculate(input) {
+           let tramtrieu = Math.floor(input % 100000000);
+           let chuctrieu = Math.floor((input % 100000000)/ 10000000);
+           let trieu = Math.floor((input % 10000000) / 1000000);
+           let tramng = Math.floor((input % 1000000) / 100000);
+           let chucng = Math.floor((input % 100000) / 10000);
+           let ngan = Math.floor((input % 10000) / 1000);
+           let tram = Math.floor((input % 1000) / 100);
+           let chuc = Math.floor((input % 100) / 10);
+           let donvi = Math.floor(input % 10);
+           let str = "";
+           str += speakCheck(tramtrieu) + " tram ";
+           str += speakCheck(chuctrieu) + " muoi ";
+           str += speakCheck(trieu) + " trieu ";
+           str += speakCheck(tramng) + " tram ";
+           str += speakCheck(chucng) + " muoi ";
+           str += speakCheck(ngan) + " nghin ";
+           str += speakCheck(tram) + " tram ";
+           str += speakCheck(chuc) + " muoi ";
+           str += speakCheck(donvi);
+           return str;
+        }
+        function sPeak() {
+            let input = +prompt("nhap so can doc co 9 chu so: ");
+            alert(speakCalculate(input));
+        }
+    </script>
+</head>
+<body>
+<button onclick="sPeak()">How to speak?</button>
+</body>
+</html>

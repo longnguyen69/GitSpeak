@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đọc số có chín chữ số</title>
+    <script>
+        function speak1(n) {
+            switch (n) {
+                case 0: return "khong";
+                case 1: return "mot";
+                case 2: return "hai";
+                case 3: return "ba";
+                case 4: return "bon";
+                case 5: return "nam";
+                case 6: return "sau";
+                case 7: return "bay";
+                case 8: return "tam";
+                case 9: return "chin";
+                default: return "khong ro so";
+            }
+        }
+        function speakAllNumber(input) {
+           let hundred_m_round = Math.floor(input / 100000000);
+           let hundered_m = hundred_m_round * 100000000;
+           let dozen_m_round = Math.floor((input % 100000000) / 10000000);
+           let dozen_m = dozen_m_round * 10000000;
+           let unit_m_round = Math.floor((input - (hundered_m + dozen_m)) / 1000000);
+
+           let unit_m = unit_m_round * 1000000;
+           console.log(unit_m_round);
+           let hundred_t_round = Math.floor(input - (hundered_m + dozen_m + unit_m) / 100000);
+           alert(hundred_t_round);
+           console.log(hundred_t_round);
+           let hundred_t = hundred_t_round * 100000;
+           let dozen_t_round = Math.floor((input - (hundered_m + dozen_m + unit_m + hundred_t)) / 10000);
+           let dozen_t = dozen_t_round * 10000;
+           let unit_t_round = Math.floor(input - (hundered_m + dozen_m + unit_m + hundred_t + dozen_t) / 1000);
+           let unit_t = unit_t_round * 1000;
+           let hundred_round = Math.floor((input - (hundered_m + dozen_m + unit_m + hundred_t + dozen_t + unit_t)) / 100);
+           let hundred = hundred_round * 100;
+           let dozen_round = Math.floor((input - (hundered_m + dozen_m + unit_m + hundred_t + dozen_t + unit_t + hundred)) / 10);
+           let dozen = dozen_round * 10;
+           let unit = input % 10;
+
+           let strnumber = "";
+           strnumber += speak1(hundred_m_round) + "tram ";
+           strnumber += speak1(dozen_m_round) + "muoi ";
+           strnumber += speak1(unit_m_round) + "trieu ";
+           strnumber += speak1(hundred_t_round) + "tram ";
+           strnumber += speak1(dozen_t_round) + "muoi ";
+           strnumber += speak1(unit_t_round) + "nghin ";
+           strnumber += speak1(hundred_round) + "tram ";
+           strnumber += speak1(dozen_round) + "muoi ";
+           strnumber += speak1(unit);
+           return strnumber;
+        }
+        function speakNumber() {
+            let input = +prompt("Nhap so can doc: ");
+            alert(speakAllNumber(input))
+        }
+    </script>
+</head>
+<body>
+   <button onclick="speakNumber()">Đọc Số</button> 
+</body>
+</html>
